@@ -67,4 +67,32 @@ func (t *Try) Then(f func() Try) Try {
 } 
 
 
+func (t *Try) OnFail(f func(e error)) {
+	if !t.Success() {
+		f(t.Error()) 
+	}
+}
 
+// takes the error and trys to repair and returns true if it does
+type RescueFunc = func(error) bool
+
+
+
+
+func (t *Try) Rescue(rf RescueFunc) Try {
+	if !t.Success() {
+		if rf(t.Error()) {
+			return OK()
+		}
+		return Fail(t.Error()) 
+	}
+
+	return OK() 
+	
+}
+
+func (t *Try) OnSuccess(f func() ) {
+	if t.Success() {
+		f() 
+	}
+}
