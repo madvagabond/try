@@ -12,6 +12,7 @@ import ( '
     "github.com/xnukernpoll/try"
     "io"
     "net"
+    "fmt"
 )
 
 func simpleExample() error {
@@ -45,7 +46,7 @@ func onExample() {
     	fmt.Println("hello I've grinded to succeed but now I am all alone and empty inside")
     } )
     
-    a.OnFail(func() {fmt.Println("Sorry I Screwed up")} )
+    a.OnFail(func(e error) {fmt.Printf("Sorry I Screwed up and got %v", e)} )
 } 
 
 ```
