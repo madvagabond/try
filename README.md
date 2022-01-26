@@ -26,9 +26,12 @@ func simpleExample() error {
     		return e 
 	})
     
-    
-    
-    	return t1.Error() 
+    	t1.OnFail(func(e error)  {
+		log.Println(e)
+		conn.Close()
+	}
+
+	return t1.Error()
 
 }
 
@@ -48,14 +51,45 @@ func onExample() {
     a.OnFail(func(e error) {fmt.Printf("Sorry I Screwed up and got %v", e)} )
 } 
 
-```
+
 
 
 
 
 ### By comparison this is how it is in plain go
-``` 
+```
+
+func plainSimpleExample() error {
+
+	conn, e := net.Dial("tcp", "0.0.0.0:21") 
+    	
+    
+	if e != nil {
+		_, e := conn.Write(b"")
+    		return e 
+	}
+    
+    	_, e1 := conn.Write(b"hello")
+
+	if e1 != nil {
+		log.Println(e1)
+		return e1
+	}
+	
+	return nil 
+
+}
 
 
+func() plainOnExample {
+	e := plainSimpleExample()
+
+	if e != nil {
+		fmt.Printf("Sorry I Screwed up and got %v", e)}
+		return 
+	}
+
+	fmt.Println("hello I've grinded to succeed but now I am all alone and empty inside")
+}
 
 ```
