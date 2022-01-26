@@ -6,8 +6,8 @@
 ### Examples 
 
 ```go
-import ( '
-
+import ( 
+    "log"
     "github.com/xnukernpoll/try"
     "io"
     "net"
@@ -50,7 +50,7 @@ func onExample() {
     
     a.OnFail(func(e error) {fmt.Printf("Sorry I Screwed up and got %v", e)} )
 } 
-
+```
 
 
 
