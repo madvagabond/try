@@ -57,7 +57,7 @@ func onExample() {
 
 
 ### By comparison this is how it is in plain go
-```
+```go 
 
 func plainSimpleExample() error {
 
