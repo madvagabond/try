@@ -1,7 +1,6 @@
 # Try
 
-## Idiomatic monadic-ish error handling for go. 
-
+## Clean, composable, and idiomatic error handling in go. 
 
 
 ### Examples 
@@ -54,5 +53,9 @@ func onExample() {
 
 
 
+### By comparison this is how it is in plain go
+``` 
 
 
+
+```
