@@ -65,7 +65,6 @@ func plainSimpleExample() error {
     	
     
 	if e != nil {
-		_, e := conn.Write(b"")
     		return e 
 	}
     
