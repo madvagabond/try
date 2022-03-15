@@ -12,7 +12,13 @@ func TestMonad(t *testing.T) {
 
 	err_res := res.Then(func() Try {return failed })
 	if err_res.Success() == true {
-		t.Fatalf("Doesn't satisfy properties bich")
+		t.Fatalf("Bind test failed")
 	} 
 
+
+	res1 := res.Map(func() error {return nil } ) 
+	
+	if res1.Success() != true {
+		t.Fatalf("Map test failed ") 
+	}
 }
